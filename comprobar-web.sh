@@ -1,6 +1,12 @@
 #!/bin/bash
 # Comprueba si una web responde y con qué código HTTP
 url="$1"
+
+if [ -z "$url" ]; then
+    echo "Uso: $0 URL" >&2
+    exit 2
+fi
+
 codigo=$(curl -sL -o /dev/null -w "%{http_code}" "$url")
 echo "Web: $url"
 echo "Código HTTP: $codigo"
