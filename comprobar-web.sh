@@ -8,9 +8,9 @@ echo "Fecha: $(date '+%d/%m/%Y %H:%M')"
 echo "Tiempo: $(curl -sL -o /dev/null -w "%{time_total}" "$url") s"
 echo "IP: $(curl -sL -o /devv/null -w "%{remote_ip}" "$url")"
 
-if [ "$codigo" -lt 400 ]; then
-echo "Resultado: OK"
+if [ "$codigo" -ge 200 ] && [ "$codigo" -lt 400 ]; then
+    echo "Resultado: OK"
 else
-echo "Resultado: FALLO"
-exit 1
+    echo "Resultado: FALLO"
+    exit 1
 fi
